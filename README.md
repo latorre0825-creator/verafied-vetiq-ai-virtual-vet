@@ -48,3 +48,36 @@ npm run dev
 - Future: sponsored vets, premium AI features
 
 Built for VeRaFIED Studios.
+
+## Capacitor (App Store + Android Store)
+
+This project is configured for Capacitor so you can ship native iOS and Android apps.
+
+### Setup
+```bash
+npm install
+# Optional: static export for offline
+# npx next build && npx next export   (if using static)
+
+npx cap add ios
+npx cap add android
+npx cap sync
+```
+
+### Open native IDEs
+```bash
+npx cap open ios      # Xcode → Archive for App Store
+npx cap open android  # Android Studio → Generate signed bundle for Play Store
+```
+
+### App IDs
+- **Bundle ID / App ID:** `com.verafied.vetiq`
+- **App Name:** VetIQ
+- **Owner:** Tiffaney Latorre (tiffaneylatorre@gmail.com) — VeRaFIED Studios
+
+### Notes
+- For fastest launch: point `server.url` in `capacitor.config.ts` to your live Vercel URL.
+- For fully offline: use static export (`out/` folder) and set `webDir: 'out'`.
+- Icons & splash screens: replace the default ones in `ios/` and `android/` after `cap add`.
+
+Ready for VeRaFIED Studios to submit to App Store and Google Play.
