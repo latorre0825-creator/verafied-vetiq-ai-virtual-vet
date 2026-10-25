@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2732 2732">
+  <rect width="2732" height="2732" fill="#0E3D37"/>
+  <g fill="#8FE3C8" transform="translate(864,864) scale(16)">
+    <ellipse cx="22" cy="22" rx="5.5" ry="7"/>
+    <ellipse cx="42" cy="22" rx="5.5" ry="7"/>
+    <ellipse cx="12" cy="34" rx="5" ry="6.2" transform="rotate(-18 12 34)"/>
+    <ellipse cx="52" cy="34" rx="5" ry="6.2" transform="rotate(18 52 34)"/>
+    <path d="M32 32c7 0 13 5.5 13 12.2 0 4.5-3.2 7.3-7.2 7.3-2.2 0-4-.8-5.8-.8s-3.6.8-5.8.8c-4 0-7.2-2.8-7.2-7.3C19 37.5 25 32 32 32z"/>
+  </g>
+  <path d="M1280 1500h172v430h-172z M1150 1620h430v172H1150z" fill="#F96A4B"/>
+  <text x="1366" y="2100" text-anchor="middle" fill="#8FE3C8" font-family="system-ui, sans-serif" font-size="140" font-weight="700">VetIQ</text>
+</svg>

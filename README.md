@@ -81,3 +81,14 @@ npx cap open android  # Android Studio → Generate signed bundle for Play Store
 - Icons & splash screens: replace the default ones in `ios/` and `android/` after `cap add`.
 
 Ready for VeRaFIED Studios to submit to App Store and Google Play.
+
+## App Icon & Splash
+Source SVGs are in `resources/`:
+- `resources/icon.svg`
+- `resources/splash.svg`
+
+Generate all store sizes with:
+```bash
+npm install -D @capacitor/assets
+npx @capacitor/assets generate --iconBackgroundColor '#0E3D37' --splashBackgroundColor '#0E3D37'
+```
