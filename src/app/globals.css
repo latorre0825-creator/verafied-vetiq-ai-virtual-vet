@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-cream: #fff9f0;
+  --color-pine-950: #0b2f2b;
+  --color-pine-900: #0e3d37;
+  --color-pine-800: #125048;
+  --color-pine-700: #17685e;
+  --color-mint-300: #8fe3c8;
+  --color-mint-400: #4fd1a5;
+  --color-mint-500: #22b07d;
+  --color-coral-400: #ff8a6b;
+  --color-coral-500: #f96a4b;
+  --color-honey-400: #ffc24b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #fff9f0;
+}
+
+::selection {
+  background: #17685e;
+  color: #fff;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.card-shadow {
+  box-shadow: 0 12px 40px -12px rgba(11, 47, 43, 0.18);
+}
+
+.paw-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-floaty {
+  animation: floaty 5s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(249, 106, 75, 0.5); }
+  70% { box-shadow: 0 0 0 14px rgba(249, 106, 75, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(249, 106, 75, 0); }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
