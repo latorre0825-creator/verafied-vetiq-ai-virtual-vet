@@ -55,17 +55,23 @@ export default function PremiumPage() {
     if (!email.includes("@")) return alert("Enter a valid email");
     setSaving(true);
     try {
-      const res = await fetch("/api/subscribe", {
+      const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, plan: checkout?.id }),
+        body: JSON.stringify({
+          plan: checkout?.id,
+          email,
+          successUrl: window.location.origin + "/app/premium?success=1",
+          cancelUrl: window.location.origin + "/app/premium",
+        }),
       });
       const data = await res.json();
       if (data.error) throw new Error(data.error);
-      setSuccess(checkout?.name || "Plus");
-      setCheckout(null);
-      setEmail("");
-      setCard("");
+      if (data.url) {
+        window.location.href = data.url; // redirect to Stripe Checkout
+        return;
+      }
+      throw new Error("No checkout URL returned");
     } catch (e) {
       alert(e instanceof Error ? e.message : "Payment failed");
     } finally {
@@ -168,7 +174,7 @@ export default function PremiumPage() {
             <button onClick={pay} disabled={saving} className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#F96A4B] py-3 text-sm font-extrabold text-white disabled:opacity-50">
               {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Crown className="h-4 w-4" />} Start free trial
             </button>
-            <p className="mt-2 text-center text-[11px] text-slate-400">🔒 Demo checkout — no real charge. Stripe-ready architecture.</p>
+            <p className="mt-2 text-center text-[11px] text-slate-400">🔒 Secure checkout via Stripe. You’ll be redirected to complete payment.</p>
           </div>
         </div>
       )}
