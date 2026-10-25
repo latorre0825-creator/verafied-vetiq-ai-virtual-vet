@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Crown, Check, Loader2, X, ShieldCheck, Zap, Gift, CreditCard } from "lucide-react";
 
@@ -46,10 +47,21 @@ export default function PremiumPage() {
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [subs, setSubs] = useState<Sub[]>([]);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     fetch("/api/subscribe").then((r) => r.json()).then((d) => setSubs(d.subscriptions || [])).catch(() => {});
   }, [success]);
+
+  // Show welcome banner after Stripe redirect
+  useEffect(() => {
+    if (searchParams.get("success") === "1") {
+      const plan = searchParams.get("plan") || "Premium";
+      setSuccess(plan);
+      // Clean the URL so refresh doesn't re-trigger
+      window.history.replaceState({}, "", "/app/premium");
+    }
+  }, [searchParams]);
 
   async function pay() {
     if (!email.includes("@")) return alert("Enter a valid email");

@@ -26,7 +26,7 @@ export async function POST(req: Request) {
       payment_method_types: ["card"],
       customer_email: email,
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: successUrl || `${process.env.NEXT_PUBLIC_APP_URL || ""}/app/premium?success=1`,
+      success_url: successUrl || `${process.env.NEXT_PUBLIC_APP_URL || ""}/app/premium?success=1&plan=${encodeURIComponent(plan || "Premium")}`,
       cancel_url: cancelUrl || `${process.env.NEXT_PUBLIC_APP_URL || ""}/app/premium`,
       metadata: { plan, email },
     });
